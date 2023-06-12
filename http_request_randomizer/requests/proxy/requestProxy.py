@@ -19,6 +19,15 @@ from http_request_randomizer.requests.parsers.PremProxyParser import PremProxyPa
 from http_request_randomizer.requests.parsers.SslProxyParser import SslProxyParser
 from http_request_randomizer.requests.useragent.userAgent import UserAgentManager
 
+# from ..proxy.ProxyObject import Protocol
+# from ..errors.ProxyListException import ProxyListException
+from ..parsers.FreeProxyParser import FreeProxyParser
+# from ..parsers.ProxyForEuParser import ProxyForEuParser
+# from ..parsers.RebroWeeblyParser import RebroWeeblyParser
+from ..parsers.PremProxyParser import PremProxyParser
+from ..parsers.SslProxyParser import SslProxyParser
+# from ..useragent.userAgent import UserAgentManager
+
 __author__ = 'pgaref'
 sys.path.insert(0, os.path.abspath('../../../../'))
 
@@ -42,9 +51,9 @@ class RequestProxy:
         #####
         parsers = list([])
         parsers.append(FreeProxyParser('FreeProxy', 'http://free-proxy-list.net', timeout=timeout))
-        #parsers.append(ProxyForEuParser('ProxyForEU', 'http://proxyfor.eu/geo.php', 1.0, timeout=timeout)) <--doesn't work anymore
-        #parsers.append(RebroWeeblyParser('ReBro', 'http://rebro.weebly.com', timeout=timeout)) <--doesn't work anymore
-        # parsers.append(PremProxyParser('PremProxy', 'https://premproxy.com', timeout=timeout))
+        # parsers.append(ProxyForEuParser('ProxyForEU', 'http://proxyfor.eu/geo.php', 1.0, timeout=timeout)) <--doesn't work anymore
+        # parsers.append(RebroWeeblyParser('ReBro', 'http://rebro.weebly.com', timeout=timeout)) <--doesn't work anymore
+        parsers.append(PremProxyParser('PremProxy', 'https://premproxy.com', timeout=timeout))
         parsers.append(SslProxyParser('SslProxy', 'https://www.sslproxies.org', timeout=timeout))
 
         self.logger.debug("=== Initialized Proxy Parsers ===")

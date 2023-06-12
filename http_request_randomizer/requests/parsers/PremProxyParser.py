@@ -8,6 +8,9 @@ from http_request_randomizer.requests.parsers.UrlParser import UrlParser
 from http_request_randomizer.requests.proxy.ProxyObject import ProxyObject, AnonymityLevel, Protocol
 from http_request_randomizer.requests.useragent.userAgent import UserAgentManager
 
+from ..parsers.js.UnPacker import JsUnPacker
+from ..useragent.userAgent import UserAgentManager
+
 
 logger = logging.getLogger(__name__)
 __author__ = 'pgaref'
@@ -95,7 +98,11 @@ class PremProxyParser(UrlParser):
 
     def init_js_unpacker(self):
         # response = requests.get(self.get_url(), timeout=self.timeout)
-        response = requests.get(self.get_url(), timeout=self.timeout, headers=self.headers)
+        response = requests.get(
+            self.get_url(), 
+            timeout=self.timeout, 
+            headers=self.headers
+        )
         # Could not parse provider page - Let user know
         if not response.ok:
             logger.warning("Proxy Provider url failed: {}".format(self.get_url()))
