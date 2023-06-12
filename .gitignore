@@ -20,3 +20,7 @@
 
 ## File-based project format:
 *.iws
+
+#
+*.ipynb
+.vscode/
